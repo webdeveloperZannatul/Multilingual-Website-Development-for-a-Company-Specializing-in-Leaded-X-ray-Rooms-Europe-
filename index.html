@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuroShield Radiology | Lead-Lined Room Solutions</title>
+    <meta name="description" content="European leader in the design, manufacture, and installation of lead-lined X-ray rooms and radiology shielding solutions.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Alpine.js for Interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        corporate: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            300: '#9fb3c8',
+                            400: '#829ab1',
+                            500: '#627d98',
+                            600: '#486581',
+                            700: '#334e68', // Primary Dark Blue
+                            800: '#243b53',
+                            900: '#102a43',
+                        },
+                        accent: {
+                            500: '#005a9c', // Medical Blue
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(16, 42, 67, 0.75), rgba(16, 42, 67, 0.6)), url('https://i.postimg.cc/VvKSqNYP/lead-lined-X-ray-rooms-for-the-European-healthcare-sector.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .process-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #cbd5e1;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .process-line {
+                left: 20px;
+            }
+        }
+
+        /* Hover effects for cards */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-slate-600 antialiased bg-white" x-data="siteData()" x-init="initData()">
+
+    <!-- Top Bar -->
+    <div class="bg-corporate-900 text-slate-300 text-xs py-2 hidden md:block border-b border-slate-700">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-6">
+                <span><i class="fas fa-certificate text-accent-500 mr-2"></i>ISO 9001:2015 Certified</span>
+                <span><i class="fas fa-shield-virus text-accent-500 mr-2"></i>IEC 60601-1-3 Compliant</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">info@euroshield-radiology.eu</a>
+                <span>+32 2 555 0199</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-md transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-corporate-800 text-white flex items-center justify-center rounded-sm">
+                        <i class="fas fa-layer-group text-xl"></i>
+                    </div>
+                    <div class="leading-tight">
+                        <span class="block text-corporate-900 font-bold text-lg tracking-tight">EUROSHIELD</span>
+                        <span class="block text-slate-500 text-xs font-medium tracking-widest uppercase">Radiology Engineering</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-slate-700 hover:text-accent-500 font-medium text-sm uppercase tracking-wide" x-text="t.nav_home"></a>
+                    <a href="#about" class="text-slate-700 hover:text-accent-500 font-medium text-sm uppercase tracking-wide" x-text="t.nav_about"></a>
+                    <a href="#services" class="text-slate-700 hover:text-accent-500 font-medium text-sm uppercase tracking-wide" x-text="t.nav_services"></a>
+                    <a href="#process" class="text-slate-700 hover:text-accent-500 font-medium text-sm uppercase tracking-wide" x-text="t.nav_process"></a>
+                    <a href="#projects" class="text-slate-700 hover:text-accent-500 font-medium text-sm uppercase tracking-wide" x-text="t.nav_projects"></a>
+                    <a href="#contact" class="px-5 py-2.5 bg-corporate-800 text-white font-medium text-sm rounded hover:bg-corporate-700 transition shadow-lg hover:shadow-xl" x-text="t.btn_quote"></a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" @click.outside="open = false" class="flex items-center gap-2 text-slate-700 hover:text-accent-500 font-medium">
+                            <i class="fas fa-globe"></i>
+                            <span x-text="currentLang.toUpperCase()"></span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div x-show="open" 
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             class="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 border border-slate-100">
+                            <template x-for="lang in ['en', 'es', 'fr', 'de', 'it']">
+                                <a href="#" @click.prevent="setLang(lang); open = false" 
+                                   class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                                   :class="{'bg-slate-50 font-bold': currentLang === lang}"
+                                   x-text="langNames[lang]">
+                                </a>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-corporate-800 text-2xl" @click="mobileMenuOpen = !mobileMenuOpen">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 z-40">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="#home" @click="mobileMenuOpen = false" class="text-slate-800 font-medium" x-text="t.nav_home"></a>
+                <a href="#about" @click="mobileMenuOpen = false" class="text-slate-800 font-medium" x-text="t.nav_about"></a>
+                <a href="#services" @click="mobileMenuOpen = false" class="text-slate-800 font-medium" x-text="t.nav_services"></a>
+                <a href="#process" @click="mobileMenuOpen = false" class="text-slate-800 font-medium" x-text="t.nav_process"></a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="text-accent-500 font-bold" x-text="t.btn_quote"></a>
+                
+                <div class="border-t border-slate-100 pt-4">
+                    <p class="text-xs text-slate-400 mb-2 uppercase">Select Language</p>
+                    <div class="flex gap-3">
+                        <template x-for="lang in ['en', 'es', 'fr', 'de', 'it']">
+                            <button @click="setLang(lang)" class="w-8 h-8 rounded-full border flex items-center justify-center text-xs font-bold uppercase transition"
+                            :class="currentLang === lang ? 'bg-corporate-800 text-white border-corporate-800' : 'text-slate-600 border-slate-300'">
+                                <span x-text="lang"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-[85vh] min-h-[600px] flex items-center justify-center hero-bg text-white">
+        <div class="container mx-auto px-6 text-center relative z-10" data-aos="fade-up">
+            <div class="inline-block px-3 py-1 mb-6 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-sm tracking-wider uppercase">
+                <i class="fas fa-check-circle mr-2 text-green-400"></i> <span x-text="t.hero_badge"></span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight max-w-4xl mx-auto" x-text="t.hero_title"></h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light" x-text="t.hero_subtitle"></p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#contact" class="px-8 py-4 bg-accent-500 hover:bg-blue-600 text-white font-semibold rounded shadow-lg transition transform hover:-translate-y-1" x-text="t.btn_quote"></a>
+                <a href="#services" class="px-8 py-4 bg-transparent border border-white/40 hover:bg-white/10 text-white font-semibold rounded transition" x-text="t.btn_services"></a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/50 hover:text-white transition"><i class="fas fa-chevron-down text-2xl"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <h4 class="text-accent-500 font-bold uppercase tracking-widest text-sm mb-2" x-text="t.about_label"></h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-corporate-900 mb-6" x-text="t.about_title"></h2>
+                    <div class="h-1 w-20 bg-accent-500 mb-8"></div>
+                    <p class="text-lg leading-relaxed mb-6" x-text="t.about_text_1"></p>
+                    <p class="text-slate-500 mb-8" x-text="t.about_text_2"></p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span x-text="t.feature_1"></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span x-text="t.feature_2"></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span x-text="t.feature_3"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 relative" data-aos="fade-left">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-corporate-100 rounded-tl-3xl -z-10"></div>
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-corporate-100 rounded-br-3xl -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Radiology Equipment" class="rounded-lg shadow-2xl object-cover h-[500px] w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-corporate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h4 class="text-accent-500 font-bold uppercase tracking-widest text-sm mb-2" x-text="t.services_label"></h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-corporate-900 mb-4" x-text="t.services_title"></h2>
+                <p class="text-slate-500" x-text="t.services_subtitle"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-lg border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-corporate-100 rounded-lg flex items-center justify-center text-corporate-800 text-2xl mb-6">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporate-900 mb-3" x-text="t.srv_1_title"></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" x-text="t.srv_1_desc"></p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-lg border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-corporate-100 rounded-lg flex items-center justify-center text-corporate-800 text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporate-900 mb-3" x-text="t.srv_2_title"></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" x-text="t.srv_2_desc"></p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-lg border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-corporate-100 rounded-lg flex items-center justify-center text-corporate-800 text-2xl mb-6">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporate-900 mb-3" x-text="t.srv_3_title"></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" x-text="t.srv_3_desc"></p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-lg border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-corporate-100 rounded-lg flex items-center justify-center text-corporate-800 text-2xl mb-6">
+                        <i class="fas fa-door-closed"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporate-900 mb-3" x-text="t.srv_4_title"></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" x-text="t.srv_4_desc"></p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-lg border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-corporate-100 rounded-lg flex items-center justify-center text-corporate-800 text-2xl mb-6">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporate-900 mb-3" x-text="t.srv_5_title"></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" x-text="t.srv_5_desc"></p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-lg border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-corporate-100 rounded-lg flex items-center justify-center text-corporate-800 text-2xl mb-6">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-corporate-900 mb-3" x-text="t.srv_6_title"></h3>
+                    <p class="text-slate-500 text-sm leading-relaxed" x-text="t.srv_6_desc"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Construction Process -->
+    <section id="process" class="py-20 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-corporate-900 mb-4" x-text="t.process_title"></h2>
+                <p class="text-slate-500 max-w-2xl mx-auto" x-text="t.process_subtitle"></p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Vertical Line -->
+                <div class="process-line"></div>
+
+                <!-- Step 1 -->
+                <div class="relative flex flex-col md:flex-row items-center mb-16 group" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold text-corporate-800" x-text="t.step_1_title"></h3>
+                        <p class="text-sm text-slate-500 mt-2" x-text="t.step_1_desc"></p>
+                    </div>
+                    <div class="w-10 h-10 bg-accent-500 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0">1</div>
+                    <div class="md:w-1/2 md:pl-12 hidden md:block">
+                        <i class="fas fa-project-diagram text-4xl text-corporate-200"></i>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative flex flex-col md:flex-row items-center mb-16 group" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                         <i class="fas fa-calculator text-4xl text-corporate-200"></i>
+                    </div>
+                    <div class="w-10 h-10 bg-accent-500 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0">2</div>
+                    <div class="md:w-1/2 md:pl-12 mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold text-corporate-800" x-text="t.step_2_title"></h3>
+                        <p class="text-sm text-slate-500 mt-2" x-text="t.step_2_desc"></p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative flex flex-col md:flex-row items-center mb-16 group" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold text-corporate-800" x-text="t.step_3_title"></h3>
+                        <p class="text-sm text-slate-500 mt-2" x-text="t.step_3_desc"></p>
+                    </div>
+                    <div class="w-10 h-10 bg-accent-500 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0">3</div>
+                    <div class="md:w-1/2 md:pl-12 hidden md:block">
+                         <i class="fas fa-layer-group text-4xl text-corporate-200"></i>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative flex flex-col md:flex-row items-center mb-16 group" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                        <i class="fas fa-tools text-4xl text-corporate-200"></i>
+                    </div>
+                    <div class="w-10 h-10 bg-accent-500 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0">4</div>
+                    <div class="md:w-1/2 md:pl-12 mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold text-corporate-800" x-text="t.step_4_title"></h3>
+                        <p class="text-sm text-slate-500 mt-2" x-text="t.step_4_desc"></p>
+                    </div>
+                </div>
+
+                 <!-- Step 5 -->
+                 <div class="relative flex flex-col md:flex-row items-center group" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold text-corporate-800" x-text="t.step_5_title"></h3>
+                        <p class="text-sm text-slate-500 mt-2" x-text="t.step_5_desc"></p>
+                    </div>
+                    <div class="w-10 h-10 bg-green-500 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0"><i class="fas fa-check"></i></div>
+                    <div class="md:w-1/2 md:pl-12 hidden md:block">
+                        <i class="fas fa-file-signature text-4xl text-corporate-200"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Gallery -->
+    <section id="projects" class="py-20 bg-corporate-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <h4 class="text-accent-500 font-bold uppercase tracking-widest text-sm mb-2" x-text="t.projects_label"></h4>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" x-text="t.projects_title"></h2>
+                </div>
+                <a href="#" class="text-slate-300 hover:text-white border-b border-slate-600 pb-1 mt-4 md:mt-0 transition">View all projects &rarr;</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-lg aspect-video cursor-pointer" data-aos="zoom-in">
+                    <img src="https://i.postimg.cc/HLRMrn6T/X-Ray-Room-Munich.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="X-Ray Room Munich" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-90 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <p class="text-accent-500 text-xs font-bold uppercase mb-1">Munich, Germany</p>
+                            <h3 class="text-lg font-bold">University Hospital Radiology Wing</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-lg aspect-video cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="CT Scanner Room Madrid" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-90 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <p class="text-accent-500 text-xs font-bold uppercase mb-1">Madrid, Spain</p>
+                            <h3 class="text-lg font-bold">Private Clinic CT Installation</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-lg aspect-video cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dental Clinic Lyon" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-90 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <p class="text-accent-500 text-xs font-bold uppercase mb-1">Lyon, France</p>
+                            <h3 class="text-lg font-bold">Maxillofacial Shielding Suite</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-corporate-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+                <!-- Info Side -->
+                <div class="bg-corporate-800 text-white p-10 md:w-2/5 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6" x-text="t.contact_title"></h3>
+                        <p class="text-slate-300 mb-8 text-sm" x-text="t.contact_text"></p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-4 text-accent-500"></i>
+                                <div>
+                                    <h5 class="font-bold text-sm uppercase">Headquarters</h5>
+                                    <p class="text-slate-400 text-sm">EuroShield Blvd 12<br>1000 Brussels, Belgium</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-4 text-accent-500"></i>
+                                <div>
+                                    <h5 class="font-bold text-sm uppercase">Email</h5>
+                                    <p class="text-slate-400 text-sm">contact@euroshield.eu</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-4 text-accent-500"></i>
+                                <div>
+                                    <h5 class="font-bold text-sm uppercase">Phone</h5>
+                                    <p class="text-slate-400 text-sm">+32 2 555 0199</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <p class="text-xs text-slate-500">VAT: BE 0123.456.789</p>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="p-10 md:w-3/5">
+                    <form @submit.prevent="alert('Thank you for your inquiry. Our engineering team will contact you shortly.')">
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-slate-700 mb-2" x-text="t.form_name"></label>
+                            <input type="text" class="w-full px-4 py-3 rounded bg-slate-50 border border-slate-200 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 outline-none transition" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-slate-700 mb-2" x-text="t.form_email"></label>
+                            <input type="email" class="w-full px-4 py-3 rounded bg-slate-50 border border-slate-200 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 outline-none transition" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-slate-700 mb-2" x-text="t.form_project_type"></label>
+                            <select class="w-full px-4 py-3 rounded bg-slate-50 border border-slate-200 focus:border-accent-500 outline-none transition">
+                                <option value="xray">General X-Ray Room</option>
+                                <option value="ct">CT Scanner Room</option>
+                                <option value="dental">Dental/Panoramic</option>
+                                <option value="industrial">Industrial Shielding</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-slate-700 mb-2" x-text="t.form_message"></label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded bg-slate-50 border border-slate-200 focus:border-accent-500 outline-none transition" required></textarea>
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <input type="checkbox" id="gdpr" class="mr-3" required>
+                            <label for="gdpr" class="text-xs text-slate-500">I accept the <a href="#" class="underline">Privacy Policy</a> and agree to the processing of my data.</label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-corporate-800 text-white font-bold py-3 px-4 rounded hover:bg-corporate-700 transition" x-text="t.form_submit"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-sm py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4 text-white">
+                        <i class="fas fa-layer-group text-xl"></i>
+                        <span class="font-bold text-lg">EUROSHIELD</span>
+                    </div>
+                    <p class="mb-4">Engineering safety through precision. Leading European provider of radiation shielding solutions.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">X-Ray Room Design</a></li>
+                        <li><a href="#" class="hover:text-white transition">Lead Shielding Calculation</a></li>
+                        <li><a href="#" class="hover:text-white transition">Radiation Doors</a></li>
+                        <li><a href="#" class="hover:text-white transition">Compliance Audits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">Legal Notice</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Sale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase mb-4">Certifications</h4>
+                    <div class="flex gap-4 text-2xl">
+                        <i class="fas fa-certificate" title="ISO 9001"></i>
+                        <i class="fas fa-globe-europe" title="EU Compliant"></i>
+                        <i class="fas fa-file-medical-alt" title="Medical Certified"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2025 EuroShield Radiology Engineering. All rights reserved Designed By Zannatul.</p>
+                <div class="mt-4 md:mt-0 flex gap-4">
+                    <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent -->
+    <div x-show="!cookiesAccepted" x-transition.opacity class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-6 shadow-2xl z-50 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-sm text-slate-600">
+            <p><strong>We use cookies.</strong> We use cookies to ensure compliance with European data protection regulations and to improve your experience on our website. <a href="#" class="underline text-corporate-800">Read our Cookie Policy</a>.</p>
+        </div>
+        <div class="flex gap-3">
+            <button @click="cookiesAccepted = true" class="px-6 py-2 bg-slate-200 text-slate-800 font-bold rounded hover:bg-slate-300 transition text-sm">Necessary Only</button>
+            <button @click="cookiesAccepted = true" class="px-6 py-2 bg-corporate-800 text-white font-bold rounded hover:bg-corporate-700 transition text-sm">Accept All</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // AOS Animation Init
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+        });
+
+        // Alpine Data & Translations
+        function siteData() {
+            return {
+                mobileMenuOpen: false,
+                currentLang: 'en',
+                cookiesAccepted: false,
+                langNames: {
+                    'en': 'English',
+                    'es': 'Español',
+                    'fr': 'Français',
+                    'de': 'Deutsch',
+                    'it': 'Italiano'
+                },
+                
+                // Translations Dictionary
+                translations: {
+                    en: {
+                        nav_home: "Home",
+                        nav_about: "About Us",
+                        nav_services: "Services",
+                        nav_process: "Process",
+                        nav_projects: "Projects",
+                        btn_quote: "Request Quote",
+                        btn_services: "Our Solutions",
+                        hero_badge: "EU Regulation Compliant",
+                        hero_title: "Advanced Radiation Shielding Engineering",
+                        hero_subtitle: "Specialized design, manufacture, and installation of lead-lined X-ray rooms for the European healthcare sector.",
+                        about_label: "Our Company",
+                        about_title: "Setting the European Standard in Radiology Safety",
+                        about_text_1: "EuroShield specializes in the comprehensive protection of radiological environments. We engineer safety solutions that meet the strictest European directives for ionizing radiation.",
+                        about_text_2: "From calculation to certification, we ensure your facility protects both patients and medical staff with absolute precision.",
+                        feature_1: "ISO 9001 Certified Manufacturing",
+                        feature_2: "Custom Lead Thickness Calculation (Pb mm)",
+                        feature_3: "Full Legalization Support",
+                        services_label: "Capabilities",
+                        services_title: "Comprehensive Shielding Solutions",
+                        services_subtitle: "End-to-end services for hospitals, dental clinics, and industrial facilities.",
+                        srv_1_title: "Lead-Lined Rooms",
+                        srv_1_desc: "Complete wall, floor, and ceiling shielding solutions with seamless lead integration to prevent leakage.",
+                        srv_2_title: "Radiation Doors",
+                        srv_2_desc: "Heavy-duty lead-lined doors (sliding and hinged) designed for X-ray and CT procedure rooms.",
+                        srv_3_title: "Shielding Calculation",
+                        srv_3_desc: "Certified physics calculations to determine exact lead equivalence (mm Pb) required for your equipment.",
+                        srv_4_title: "Control Windows",
+                        srv_4_desc: "Lead glass observation windows offering perfect visibility with maximum radiation attenuation.",
+                        srv_5_title: "Legalization",
+                        srv_5_desc: "Technical project documentation and verification to obtain operational permits from local nuclear authorities.",
+                        srv_6_title: "Industrial Shielding",
+                        srv_6_desc: "Custom enclosures for non-destructive testing (NDT) and industrial X-ray applications.",
+                        process_title: "Construction Process",
+                        process_subtitle: "A rigorous engineering workflow ensuring 100% radiation containment.",
+                        step_1_title: "Preliminary Study",
+                        step_1_desc: "Analysis of architectural plans and equipment specifications (kV, mA, workload).",
+                        step_2_title: "Shielding Calculation",
+                        step_2_desc: "Determination of required lead thickness (e.g., 1mm, 2mm, 3mm Pb) based on scatter radiation analysis.",
+                        step_3_title: "Structural Preparation",
+                        step_3_desc: "Reinforcement of walls and supports to handle the weight of lead panels and doors.",
+                        step_4_title: "Installation",
+                        step_4_desc: "Application of continuous lead barriers with overlapping joints to ensure zero radiation leaks.",
+                        step_5_title: "Verification & Handover",
+                        step_5_desc: "Radiometric survey and issuance of conformity certificates for regulatory approval.",
+                        projects_label: "Portfolio",
+                        projects_title: "Recent Installations",
+                        contact_title: "Start Your Project",
+                        contact_text: "Contact our engineering team for technical inquiries or a commercial proposal.",
+                        form_name: "Full Name",
+                        form_email: "Corporate Email",
+                        form_project_type: "Project Type",
+                        form_message: "Technical Requirements / Message",
+                        form_submit: "Send Request"
+                    },
+                    es: {
+                        nav_home: "Inicio",
+                        nav_about: "Empresa",
+                        nav_services: "Servicios",
+                        nav_process: "Proceso",
+                        nav_projects: "Proyectos",
+                        btn_quote: "Solicitar Presupuesto",
+                        btn_services: "Soluciones",
+                        hero_badge: "Normativa Europea Cumplida",
+                        hero_title: "Ingeniería Avanzada en Blindaje Radiológico",
+                        hero_subtitle: "Diseño, fabricación e instalación de salas de rayos X emplomadas para el sector sanitario europeo.",
+                        about_label: "Nuestra Empresa",
+                        about_title: "Estándar Europeo en Seguridad Radiológica",
+                        about_text_1: "EuroShield se especializa en la protección integral de entornos radiológicos. Diseñamos soluciones que cumplen las directivas europeas más estrictas.",
+                        about_text_2: "Desde el cálculo hasta la certificación, garantizamos la seguridad de pacientes y personal médico.",
+                        feature_1: "Fabricación Certificada ISO 9001",
+                        feature_2: "Cálculo de Espesor de Plomo (mm Pb)",
+                        feature_3: "Soporte para Legalización",
+                        services_label: "Capacidades",
+                        services_title: "Soluciones Integrales de Blindaje",
+                        services_subtitle: "Servicios completos para hospitales, clínicas dentales e industria.",
+                        srv_1_title: "Salas Emplomadas",
+                        srv_1_desc: "Blindaje de paredes, suelos y techos con integración de plomo sin costuras.",
+                        srv_2_title: "Puertas Radiológicas",
+                        srv_2_desc: "Puertas emplomadas de alta resistencia para salas de Rayos X y TAC.",
+                        srv_3_title: "Cálculo de Blindaje",
+                        srv_3_desc: "Cálculos físicos certificados para determinar la equivalencia exacta de plomo.",
+                        srv_4_title: "Visores de Control",
+                        srv_4_desc: "Ventanas de vidrio emplomado que ofrecen visibilidad y atenuación máxima.",
+                        srv_5_title: "Legalización",
+                        srv_5_desc: "Documentación técnica para obtener permisos de las autoridades nucleares.",
+                        srv_6_title: "Blindaje Industrial",
+                        srv_6_desc: "Recintos a medida para ensayos no destructivos (END).",
+                        process_title: "Proceso Constructivo",
+                        process_subtitle: "Flujo de trabajo riguroso para asegurar la contención total.",
+                        step_1_title: "Estudio Preliminar",
+                        step_1_desc: "Análisis de planos y especificaciones del equipo (kV, mA).",
+                        step_2_title: "Cálculo de Barreras",
+                        step_2_desc: "Determinación del espesor de plomo (ej. 1mm, 2mm Pb).",
+                        step_3_title: "Preparación",
+                        step_3_desc: "Refuerzo de estructuras para soportar el peso del plomo.",
+                        step_4_title: "Instalación",
+                        step_4_desc: "Aplicación de barreras continuas con solapes para evitar fugas.",
+                        step_5_title: "Verificación",
+                        step_5_desc: "Levantamiento radiométrico y certificado de conformidad.",
+                        projects_label: "Portafolio",
+                        projects_title: "Instalaciones Recientes",
+                        contact_title: "Inicie su Proyecto",
+                        contact_text: "Contacte con nuestro equipo técnico para una propuesta comercial.",
+                        form_name: "Nombre Completo",
+                        form_email: "Email Corporativo",
+                        form_project_type: "Tipo de Proyecto",
+                        form_message: "Requisitos Técnicos / Mensaje",
+                        form_submit: "Enviar Solicitud"
+                    },
+                    fr: {
+                        nav_home: "Accueil",
+                        nav_about: "Société",
+                        nav_services: "Services",
+                        nav_process: "Processus",
+                        nav_projects: "Projets",
+                        btn_quote: "Demander un Devis",
+                        btn_services: "Nos Solutions",
+                        hero_badge: "Conforme aux Normes UE",
+                        hero_title: "Ingénierie Avancée en Radioprotection",
+                        hero_title: "Conception et installation de salles de radiologie plombées pour le secteur médical européen.",
+                        about_title: "L'Excellence en Sécurité Radiologique",
+                        about_text_1: "EuroShield est spécialisé dans la protection des environnements radiologiques, garantissant la conformité aux directives européennes.",
+                        feature_1: "Fabrication Certifiée ISO 9001",
+                        feature_2: "Calcul d'Épaisseur de Plomb",
+                        srv_1_title: "Salles Plombées",
+                        srv_1_desc: "Isolation complète des murs, sols et plafonds avec feuilles de plomb.",
+                        process_title: "Processus de Construction",
+                        step_1_title: "Étude Préliminaire",
+                        step_2_title: "Calcul de Radioprotection",
+                        step_4_title: "Installation du Plomb",
+                        contact_title: "Contactez-nous",
+                        form_submit: "Envoyer"
+                    },
+                    de: {
+                        nav_home: "Startseite",
+                        nav_about: "Über Uns",
+                        nav_services: "Leistungen",
+                        nav_process: "Ablauf",
+                        nav_projects: "Projekte",
+                        btn_quote: "Angebot Anfordern",
+                        hero_title: "Fortschrittliche Strahlenschutztechnik",
+                        hero_badge: "EU-Normenkonform",
+                        about_title: "Europäischer Standard für Radiologiesicherheit",
+                        about_text_1: "EuroShield ist auf den umfassenden Schutz radiologischer Umgebungen spezialisiert.",
+                        srv_1_title: "Bleigeschirmte Räume",
+                        process_title: "Bauprozess",
+                        step_2_title: "Strahlenschutzberechnung",
+                        contact_title: "Kontaktieren Sie uns",
+                        form_submit: "Senden"
+                    },
+                    it: {
+                        nav_home: "Home",
+                        nav_about: "Azienda",
+                        nav_services: "Servizi",
+                        nav_process: "Processo",
+                        nav_projects: "Progetti",
+                        btn_quote: "Richiedi Preventivo",
+                        hero_title: "Ingegneria Avanzata di Schermatura",
+                        hero_badge: "Conforme Normative UE",
+                        about_title: "Standard Europeo in Sicurezza Radiologica",
+                        srv_1_title: "Sale Piombate",
+                        process_title: "Processo Costruttivo",
+                        step_2_title: "Calcolo Schermatura",
+                        contact_title: "Contattaci",
+                        form_submit: "Inviare"
+                    }
+                },
+                
+                get t() {
+                    // Fallback to English if translation missing for specific key
+                    const lang = this.translations[this.currentLang] || this.translations['en'];
+                    const defaultLang = this.translations['en'];
+                    
+                    // Return a proxy to handle missing keys gracefully
+                    return new Proxy(lang, {
+                        get: (target, name) => target[name] || defaultLang[name] || name
+                    });
+                },
+                
+                setLang(lang) {
+                    this.currentLang = lang;
+                },
+
+                initData() {
+                    // Check browser language or set default
+                    const browserLang = navigator.language.split('-')[0];
+                    if (['en', 'es', 'fr', 'de', 'it'].includes(browserLang)) {
+                        this.currentLang = browserLang;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
