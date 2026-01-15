@@ -1,0 +1,2 @@
+# Multilingual-Website-Development-for-a-Company-Specializing-in-Leaded-X-ray-Rooms-Europe-
+I am a professional web developer and digital solutions specialist with strong experience.I deliver secure, scalable, and fast websites using modern HTML, PHP and WordPress frameworks,ensuring full compliance with SEO standards,GDPR requirements and multilingual accessibility. My focus is always on clarity,technical credibility and lead generation.
